@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Перевірка слів</title>
+  </head>
+  <body>
+    <h1>Перевірка слів</h1>
+    <div id="wordDisplay"></div>
+    <input type="text" id="wordInput" />
+    <button onclick="checkWord()">Перевірити</button>
+
+    <script>
+      // Список слів
+      var words = ["яблуко", "банан", "апельсин", "груша", "вишня"];
+
+      // Функція для вибору слова та виведення його на екран
+      function chooseWord() {
+        var randomIndex = Math.floor(Math.random() * words.length);
+        var word = words[randomIndex];
+        document.getElementById("wordDisplay").innerText = word;
+        return word;
+      }
+
+      // Функція для перевірки слова
+      function checkWord() {
+        var displayedWord = document
+          .getElementById("wordDisplay")
+          .innerText.toLowerCase();
+        var userInput = document
+          .getElementById("wordInput")
+          .value.toLowerCase();
+
+        if (displayedWord === userInput) {
+          alert("Правильно!");
+        } else {
+          alert("Неправильно. Спробуйте ще раз.");
+        }
+        // Очистимо поле вводу
+        document.getElementById("wordInput").value = "";
+        // Виберемо нове слово
+        chooseWord();
+      }
+
+      // Виберемо перше слово при завантаженні сторінки
+      chooseWord();
+    </script>
+  </body>
+</html>
